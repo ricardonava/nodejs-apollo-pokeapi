@@ -23,6 +23,10 @@ export default function makeEvolutionsChain(data: any) {
     !!evoData &&
     Object.prototype.hasOwnProperty.call(evoData, 'evolves_to')
   )
-  console.log(evoChain)
+
+  if (evoChain.length === 1) {
+    return null
+  }
+
   return evoChain
 }
