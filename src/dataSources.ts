@@ -24,7 +24,7 @@ export default class PokeAPI extends RESTDataSource {
     const {
       color: { name: color },
       evolution_chain: { url: evolutionUrl },
-    } = await this.get(`pokemon-species/${pokemonName.toLocaleLowerCase()}`)
+    } = await this.get(`pokemon-species/${id}`)
 
     const pokemon = {
       name,
