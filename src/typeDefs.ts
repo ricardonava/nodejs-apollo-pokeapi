@@ -7,13 +7,13 @@ const typeDefs = gql`
   type Pokemon {
     name: String!
     id: Int!
-    sprite: String!
+    sprite: String
     types: [String]
     height: Float!
     weight: Float!
     location: String!
     evolutionUrl: String
-    color: String
+    color: String!
   }
 
   # The "Query" type is special: it lists all of the available queries that

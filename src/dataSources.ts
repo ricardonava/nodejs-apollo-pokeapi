@@ -10,7 +10,11 @@ export default class PokeAPI extends RESTDataSource {
     const {
       name,
       id,
-      sprites,
+      sprites: {
+        other: {
+          dream_world: { front_default: sprite },
+        },
+      },
       types,
       weight,
       height,
@@ -25,7 +29,7 @@ export default class PokeAPI extends RESTDataSource {
     const pokemon = {
       name,
       id,
-      sprite: sprites.other['dream_world'].front_default,
+      sprite,
       types: types.map((type: any) => type.type.name),
       height: weight / 10,
       weight: height / 10,
@@ -33,7 +37,6 @@ export default class PokeAPI extends RESTDataSource {
       evolutionUrl,
       color,
     }
-    console.log(pokemon)
     return pokemon
   }
 }
