@@ -1,4 +1,5 @@
 import { RESTDataSource } from 'apollo-datasource-rest'
+import makeEvolutionsChain from './utils/makeEvolutionsChain'
 
 export default class PokeAPI extends RESTDataSource {
   constructor() {
@@ -59,5 +60,15 @@ export default class PokeAPI extends RESTDataSource {
     )
     console.log(locationNames)
     return locationNames
+  }
+
+  getPokemonEvolutions = async ({
+    evolutionsUrl,
+  }: {
+    evolutionsUrl: string
+  }) => {
+    const evolutions = await this.get(evolutionsUrl)
+    const evoChain = makeEvolutionsChain(evolutions)
+    return evoChain
   }
 }
