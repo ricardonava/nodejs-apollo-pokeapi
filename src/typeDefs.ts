@@ -11,7 +11,7 @@ const typeDefs = gql`
     types: [String]
     height: Float!
     weight: Float!
-    location: String!
+    location: String
     evolutionUrl: String
     color: String!
   }
@@ -21,6 +21,8 @@ const typeDefs = gql`
   # case, the "pokemon" query returns a Pokemon (defined above).
   type Query {
     pokemon(name: String!): Pokemon
+    pokemonLocations(locationsUrl: String!): [String]
+    pokemonEvolutions(evolutionsUrl: String!): [String]
   }
 `
 

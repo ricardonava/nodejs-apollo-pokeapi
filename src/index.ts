@@ -9,6 +9,16 @@ const resolvers = {
     // Destructure name from args
     pokemon: (_root: any, { name }: { name: string }, { dataSources }: any) =>
       dataSources.pokeAPI.getAPokemon({ name }),
+    pokemonLocations: (
+      _root: any,
+      { locationsUrl }: { locationsUrl: string },
+      { dataSources }: any
+    ) => dataSources.pokeAPI.getPokemonLocationNames({ locationsUrl }),
+    pokemonEvolutions: (
+      _root: any,
+      { evolutionsUrl }: { evolutionsUrl: string },
+      { dataSources }: any
+    ) => dataSources.pokeAPI.getPokemonEvolutions({ evolutionsUrl }),
   },
 }
 
