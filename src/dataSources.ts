@@ -6,17 +6,34 @@ export default class PokeAPI extends RESTDataSource {
     this.baseURL = 'https://pokeapi.co/api/v2/'
   }
 
-  async getAPokemon(name) {
-    const result = await this.get(`pokemon/${name}`)
-    console.log(result)
-    return result
-  }
+  async getAPokemon({ name: pokemonName }: { name: string }) {
+    const {
+      name,
+      id,
+      sprites,
+      types,
+      weight,
+      height,
+      location_area_encounters: location,
+    } = await this.get(`pokemon/${pokemonName.toLocaleLowerCase()}`)
 
-  //   async getMostViewedMovies(limit = 10) {
-  //     const data = await this.get('movies', {
-  //       per_page: limit,
-  //       order_by: 'most_viewed',
-  //     })
-  //     return data.results
-  //   }
+    const {
+      color: { name: color },
+      evolution_chain: { url: evolutionUrl },
+    } = await this.get(`pokemon-species/${pokemonName.toLocaleLowerCase()}`)
+
+    const pokemon = {
+      name,
+      id,
+      sprite: sprites.other['dream_world'].front_default,
+      types: types.map((type: any) => type.type.name),
+      height: weight / 10,
+      weight: height / 10,
+      location,
+      evolutionUrl,
+      color,
+    }
+    console.log(pokemon)
+    return pokemon
+  }
 }
