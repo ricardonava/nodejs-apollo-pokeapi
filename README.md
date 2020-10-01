@@ -1,1 +1,1 @@
-# graphQL wrapper over REST pokeAPI for PKDX moile App
+# graphQL wrapper over REST pokeAPI for PKDX mobile App
