@@ -13,7 +13,7 @@ export default class PokeAPI extends RESTDataSource {
       id,
       sprites: {
         other: {
-          dream_world: { front_default: sprite },
+          ['official-artwork']: { front_default: sprite },
         },
       },
       types,
