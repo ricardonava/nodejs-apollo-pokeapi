@@ -48,7 +48,7 @@ export default class PokeAPI extends RESTDataSource {
       // set property conditionally
       locationsUrl: pokemonLocations.length < 1 ? null : locationUrl,
       evolutionsUrl:
-        pokemonEvolutions.chain.species.name === name ? null : evolutionsUrl,
+        pokemonEvolutions.chain.evolves_to < 1 ? null : evolutionsUrl,
       color,
     }
     return pokemon
