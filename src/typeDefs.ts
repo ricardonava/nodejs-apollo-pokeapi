@@ -11,8 +11,8 @@ const typeDefs = gql`
     types: [String]
     height: Float!
     weight: Float!
-    location: String
-    evolutionUrl: String
+    locationsUrl: String
+    evolutionsUrl: String
     color: String!
   }
 
