@@ -31,7 +31,11 @@ export default class PokeAPI extends RESTDataSource {
     const { url: evolutionsUrl } = evolutionChain || {}
 
     // Check if encounters exists for UI/UX rendering disabled button
-    const pokemonLocation = await this.get(locationUrl)
+    const pokemonLocations = await this.get(locationUrl)
+
+    // Check if evolutions exists for UI/UX rendering disabled button
+    const pokemonEvolutions = await this.get(evolutionsUrl)
+    console.log(pokemonEvolutions)
 
     // Create pokemon object to return
     const pokemon = {
@@ -42,8 +46,9 @@ export default class PokeAPI extends RESTDataSource {
       height: weight / 10,
       weight: height / 10,
       // set property conditionally
-      locationsUrl: pokemonLocation.length < 1 ? null : locationUrl,
-      evolutionsUrl,
+      locationsUrl: pokemonLocations.length < 1 ? null : locationUrl,
+      evolutionsUrl:
+        pokemonEvolutions.chain.species.name === name ? null : evolutionsUrl,
       color,
     }
     return pokemon
